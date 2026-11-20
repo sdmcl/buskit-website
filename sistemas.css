@@ -1,72 +1,264 @@
 .systems {
-  padding-block: clamp(3.75rem, 7vw, 7rem);
+  padding-block: clamp(3.4rem, 6vw, 6.2rem);
+  background: #fff;
 }
 
-.systems-layout {
-  display: grid;
-  grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr);
-  align-items: start;
-  gap: clamp(2.5rem, 7vw, 7.5rem);
+.systems-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 1rem 3rem;
+  margin-bottom: clamp(1.6rem, 3vw, 2.75rem);
 }
 
-.systems-intro h2 {
-  max-width: 13ch;
+.systems-heading h2 {
+  font-size: clamp(2.7rem, 4.6vw, 4.75rem);
+  line-height: 1;
   text-wrap: balance;
 }
 
-.systems-intro p,
-.systems-list p {
+.systems-heading p {
+  max-width: 49ch;
   color: var(--muted);
-  line-height: 1.6;
+  line-height: 1.55;
+  font-size: clamp(1rem, 1.25vw, 1.12rem);
 }
 
-.systems-intro p {
-  max-width: 40ch;
-  margin-top: 1.1rem;
+.onboard-feature {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  background: #0b3454;
+  color: #fff;
+}
+
+.onboard-photo {
+  position: relative;
+  min-width: 0;
+}
+
+.onboard-photo img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.onboard-copy {
+  padding: clamp(1.7rem, 3.8vw, 3.9rem);
+  align-self: center;
+}
+
+.onboard-copy h3 {
+  max-width: 15ch;
+  font-size: clamp(2.35rem, 3.5vw, 3.7rem);
+  font-weight: 620;
+  text-wrap: balance;
+}
+
+.onboard-copy > p {
+  max-width: 55ch;
+  margin-top: .95rem;
+  color: #e0edef;
+  line-height: 1.55;
+}
+
+.onboard-functions {
+  margin-block: 1.4rem .6rem;
+}
+
+.onboard-functions > div {
+  display: grid;
+  grid-template-columns: minmax(6rem, .7fr) minmax(0, 1.8fr);
+  gap: .25rem 1.15rem;
+  padding-block: .8rem;
+  border-top: 1px solid #497083;
+}
+
+.onboard-functions dt {
+  color: #9de6dc;
+  font-weight: 650;
+}
+
+.onboard-functions dd {
+  color: #f1f6f7;
+  font-size: .97rem;
+  line-height: 1.45;
+}
+
+.onboard-contact,
+.satellite-link {
+  display: inline-block;
+  padding-block: .5rem;
+  font-size: .94rem;
+  font-weight: 650;
+  text-underline-offset: .3em;
+}
+
+.onboard-contact {
+  color: #fff;
+  text-decoration-color: #8bd2cb;
+}
+
+.onboard-contact:focus-visible {
+  outline-color: #a0f3e0;
+}
+
+.satellite-link {
+  margin-top: 1rem;
+  color: #006a70;
+}
+
+.satellite-link span {
+  display: inline-block;
+  margin-left: .25rem;
+}
+
+.operations-spread {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  align-items: start;
+  gap: clamp(2rem, 4vw, 4rem);
+  margin-top: clamp(2.5rem, 4.5vw, 4.5rem);
+}
+
+.freight-feature {
+  background: #eef5f4;
+}
+
+.freight-feature img {
+  width: 100%;
+  aspect-ratio: 2.45;
+  object-fit: cover;
+  object-position: 50% 54%;
+}
+
+.freight-copy {
+  padding: clamp(1.3rem, 2.6vw, 2.55rem);
+}
+
+.freight-copy h3,
+.agreements-feature h3 {
+  color: var(--navy);
+  font-weight: 610;
+  line-height: 1.12;
+  text-wrap: balance;
+}
+
+.freight-copy h3,
+.agreements-feature h3 {
+  font-size: clamp(1.8rem, 2.8vw, 2.8rem);
+}
+
+.freight-copy p,
+.agreements-feature p,
+.fleet-management p {
+  max-width: 62ch;
+  margin-top: .6rem;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+.freight-copy h4 {
+  margin: 1.15rem 0 0;
+  color: var(--navy);
   font-size: 1.08rem;
 }
 
-.systems-list article {
-  display: grid;
-  grid-template-columns: minmax(9rem, .7fr) minmax(0, 1.3fr);
-  align-items: baseline;
-  gap: .55rem clamp(1.25rem, 3vw, 3rem);
-  padding-block: 1.5rem;
-  border-top: 1px solid var(--line);
+.agreements-feature {
+  align-self: center;
+  padding-block: clamp(1rem, 3vw, 2rem);
 }
 
-.systems-list h3 {
-  max-width: 20ch;
-  color: var(--navy);
-  font-size: clamp(1.22rem, 1.9vw, 1.6rem);
-  font-weight: 650;
-  line-height: 1.15;
-  letter-spacing: -.035em;
+.agreement-functions {
+  margin-top: 1.6rem;
+  border-top: 2px solid var(--teal);
 }
 
-.systems-list article:first-child {
-  border-color: var(--teal);
-}
-
-.systems-list article:last-child {
+.agreement-functions > div {
+  padding-block: 1rem;
   border-bottom: 1px solid var(--line);
 }
 
-@media (max-width: 60rem) {
-  .systems-layout {
-    grid-template-columns: 1fr;
-    gap: 2rem;
+.agreement-functions dt {
+  color: var(--navy);
+  font-weight: 660;
+}
+
+.agreement-functions dd {
+  margin-top: .25rem;
+  color: var(--muted);
+}
+
+.fleet-management {
+  padding-block: clamp(3rem, 5vw, 5rem);
+  background: var(--ice);
+}
+
+.fleet-management-inner {
+  display: grid;
+  grid-template-columns: .9fr 1fr 1fr;
+  gap: clamp(1.4rem, 4vw, 4rem);
+}
+
+.fleet-management h3 {
+  color: var(--navy);
+  font-size: clamp(1.3rem, 1.8vw, 1.75rem);
+  font-weight: 620;
+  line-height: 1.16;
+}
+
+@media (max-width: 59rem) {
+  .systems-heading {
+    display: grid;
   }
 
-  .systems-intro h2,
-  .systems-intro p {
-    max-width: 54ch;
+  .onboard-feature {
+    grid-template-columns: 1fr;
+  }
+
+  .onboard-photo img {
+    position: static;
+    height: auto;
+    aspect-ratio: 2.2;
+    object-position: 50% 54%;
+  }
+
+  .operations-spread {
+    gap: 1.7rem;
+  }
+
+  .fleet-management-inner {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .fleet-management h2 {
+    grid-column: 1 / -1;
   }
 }
 
-@media (max-width: 36rem) {
-  .systems-list article {
+@media (max-width: 46rem) {
+  .operations-spread,
+  .fleet-management-inner {
     grid-template-columns: 1fr;
-    padding-block: 1.1rem;
+  }
+
+  .onboard-photo img {
+    aspect-ratio: 1.8;
+  }
+
+  .onboard-functions > div {
+    grid-template-columns: 1fr;
+  }
+
+  .onboard-copy {
+    padding: 1.45rem;
+  }
+
+  .onboard-copy h3 {
+    max-width: 19ch;
+  }
+
+  .agreements-feature {
+    padding: 0;
   }
 }

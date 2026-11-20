@@ -8,13 +8,13 @@
     background: white;
   }
   body.imprimir-boleto > :not(main),
-  body.imprimir-boleto main > :not(.venta-abordo),
-  body.imprimir-boleto .venta-abordo__intro { display: none !important; }
+  body.imprimir-boleto main > :not(.pasajes-agencia),
+  body.imprimir-boleto .pasajes-agencia__intro { display: none !important; }
   .boleto__acciones { display: none !important; }
 
   body.imprimir-boleto main,
-  body.imprimir-boleto .venta-abordo,
-  body.imprimir-boleto .venta-abordo__layout {
+  body.imprimir-boleto .pasajes-agencia,
+  body.imprimir-boleto .pasajes-agencia__layout {
     display: block;
     width: auto;
     max-width: none;

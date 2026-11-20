@@ -22,6 +22,7 @@
   <link rel="stylesheet" href="ticket-impresion.css" media="print">
   <script src="navegacion.js" defer></script>
   <script src="boleto.js" defer></script>
+  <script src="contacto.js" defer></script>
 </head>
 <body id="home">
   <a class="skip" href="#contenido">Saltar al contenido</a>
@@ -29,8 +30,8 @@
     <div class="wrap header-inner">
       <a class="brand" href="#home" aria-label="BUSKIT, inicio"><img src="assets/buskit-logo.svg" alt="BUSKIT" width="1916" height="460"></a>
       <nav id="menu-principal" class="main-nav" aria-label="Navegación principal">
-        <a href="#operacion">Control de flota</a>
-        <a href="#services">Sistemas</a>
+        <a href="#seguimiento">Control de flota</a>
+        <a href="#services">Sistemas satélites</a>
         <a href="#integraciones">Integraciones</a>
         <a href="#about">Empresa</a>
       </nav>
@@ -50,8 +51,8 @@
             <h1 id="portada-titulo">Control de flota para empresas de buses.</h1>
             <p>Programa cada salida con su bus y tripulación. Consulta las ventas por tramo y controla la recaudación de tus agencias y de cada bus.</p>
             <div class="hero-links">
-              <a class="button-mint" href="#venta-a-bordo">Venta de pasajes <span class="arrow-right" aria-hidden="true"></span></a>
-              <a class="hero-secondary" href="#services">Ver todos los sistemas</a>
+              <a class="button-mint" href="#pasajes">Sistema de pasajes <span class="arrow-right" aria-hidden="true"></span></a>
+              <a class="hero-secondary" href="#services">Sistemas satélites</a>
             </div>
           </div>
         </div>
@@ -75,25 +76,22 @@
         </ul></details>
       </div>
     </section>
-    <section class="venta-abordo" id="venta-a-bordo" aria-labelledby="titulo-venta-abordo">
-      <div class="wrap venta-abordo__layout">
-        <div class="venta-abordo__intro">
-          <h2 id="titulo-venta-abordo">Venta de pasajes en agencia y a bordo</h2>
-          <p>BUSKIT vincula cada venta con su servicio, su tramo y la caja que recibió el pago. Así puedes revisar cuánto vendió la agencia y cuánto recaudó la tripulación durante el viaje.</p>
-          <dl class="venta-abordo__detalle">
+    <section class="pasajes-agencia" id="pasajes" aria-labelledby="titulo-pasajes">
+      <div class="wrap pasajes-agencia__layout">
+        <div class="pasajes-agencia__intro">
+          <h2 id="titulo-pasajes">Sistema de venta de pasajes</h2>
+          <p>En boletería, cada venta corresponde a una salida, un tramo y una caja. Esa relación permite a la empresa conocer la ocupación del bus y revisar la recaudación de sus agencias.</p>
+          <dl class="pasajes-agencia__detalle">
             <div>
-              <dt>Boletería y venta por tramo</dt>
-              <dd>El vendedor consulta las salidas, la tarifa y la disponibilidad por piso y salón para el trayecto solicitado. Desde la agencia cobra y emite el pasaje.</dd>
+              <dt>Disponibilidad por tramo</dt>
+              <dd>Boletería consulta la tarifa y los cupos por piso y salón. Una misma plaza puede venderse en distintos tramos de la salida.</dd>
             </div>
             <div>
-              <dt>Una agencia en el bus con KLAP</dt>
-              <dd>Cuando un pasajero sube en ruta, la tripulación vende el tramo, cobra en efectivo o con tarjeta e imprime el boleto en el mismo terminal.</dd>
-            </div>
-            <div>
-              <dt>Rendición de caja</dt>
-              <dd>Al cierre, la empresa revisa los pasajes vendidos por medio de pago. En la caja del bus también puede cotejar los gastos del viaje con el efectivo que entrega la tripulación.</dd>
+              <dt>Control de boletería</dt>
+              <dd>Al cierre de turno, la agencia revisa los pasajes emitidos y los montos cobrados por medio de pago.</dd>
             </div>
           </dl>
+          <a class="satellite-link" href="#venta-a-bordo">Venta a bordo con KLAP <span aria-hidden="true">↓</span></a>
         </div>
         <figure class="boleto" aria-label="Pasaje de Puerto Montt a Santiago vía Temuco">
           <div class="boleto__papel">
@@ -123,29 +121,65 @@
       </div>
     </section>
     <section class="systems" id="services" aria-labelledby="systems-title">
-      <div class="wrap systems-layout" id="features">
-        <div class="systems-intro">
-          <h2 id="systems-title">Sistemas para la operación de tu flota</h2>
-          <p>Adaptamos los sistemas al trabajo de tus equipos de tráfico, boletería y administración, desde la programación de los buses hasta las condiciones que pactas con tus clientes.</p>
+      <div class="wrap" id="features">
+        <header class="systems-heading">
+          <h2 id="systems-title">Sistemas satélites</h2>
+          <p>KLAP lleva Pasajes a bordo del bus. Convenios abre un canal privado para clientes corporativos. Encomiendas gestiona la operación de carga con su propio software.</p>
+        </header>
+
+        <article id="venta-a-bordo" class="onboard-feature" aria-labelledby="titulo-klap">
+          <div class="onboard-photo">
+            <img src="assets/venta-a-bordo.webp" width="1536" height="1024" alt="Terminal de venta con impresora térmica en manos de la tripulación de un bus." loading="lazy" decoding="async">
+          </div>
+          <div class="onboard-copy">
+            <h3 id="titulo-klap">Venta a bordo con KLAP</h3>
+            <p>Con este sistema satélite de Pasajes, el bus opera como una agencia con caja propia. Desde el terminal KLAP, la tripulación vende por tramo y lleva el control de los pasajeros del servicio.</p>
+            <dl class="onboard-functions">
+              <div>
+                <dt>Venta y cobro</dt>
+                <dd>En rutas cortas y de larga distancia, la tripulación cobra en efectivo o con tarjeta e imprime el boleto en el mismo equipo.</dd>
+              </div>
+              <div>
+                <dt>Pasajeros del servicio</dt>
+                <dd>El personal a bordo consulta la nómina de la salida y verifica los pasajes emitidos.</dd>
+              </div>
+              <div>
+                <dt>Arqueo y rendición</dt>
+                <dd>Al cierre, la empresa revisa los cobros por medio de pago, los gastos del viaje y el efectivo que debe entregar la tripulación.</dd>
+              </div>
+            </dl>
+            <a class="onboard-contact" href="#contact" data-consulta="klap">Consultar por venta a bordo</a>
+          </div>
+        </article>
+
+        <div class="operations-spread">
+          <article id="convenios" class="agreements-feature" aria-labelledby="titulo-convenios">
+            <h3 id="titulo-convenios">Sistema de convenios</h3>
+            <p>Un canal privado de venta de pasajes para empresas que trasladan a su personal. Cada cliente opera bajo las condiciones que acuerda con la empresa de buses.</p>
+            <dl class="agreement-functions">
+              <div><dt>Gestión del convenio</dt><dd>El operador configura las condiciones comerciales, habilita usuarios y organiza el consumo por centro de costo.</dd></div>
+              <div><dt>Portal de la empresa</dt><dd>El personal autorizado emite pasajes para sus viajeros y consulta los movimientos en la cartola del convenio.</dd></div>
+            </dl>
+            <a class="satellite-link" href="#contact" data-consulta="convenios">Consultar por convenios</a>
+          </article>
+          <article id="encomiendas" class="freight-feature" aria-labelledby="titulo-encomiendas">
+            <img src="assets/despacho-encomiendas.webp" width="1200" height="800" alt="Carga de encomiendas en la bodega de un bus interurbano." loading="lazy" decoding="async">
+            <div class="freight-copy">
+              <h3 id="titulo-encomiendas">Sistema de encomiendas</h3>
+              <p>Software independiente para la gestión de carga. Las agencias registran las órdenes de flete y los bultos, preparan los manifiestos de despacho y controlan la recepción en destino.</p>
+              <h4>Tracking de carga</h4>
+              <p>El equipo consulta el historial de cada envío, el estado de sus bultos y la custodia en agencia hasta que el destinatario retira la encomienda.</p>
+              <a class="satellite-link" href="#contact" data-consulta="encomiendas">Consultar por encomiendas</a>
+            </div>
+          </article>
         </div>
-        <div class="systems-list">
-          <article id="seguimiento">
-            <h3>Control de flota y seguimiento</h3>
-            <p>Tráfico programa las salidas, asigna buses y tripulaciones y consulta la ubicación de los vehículos en ruta. La agencia puede informar al pasajero dónde va su bus.</p>
-          </article>
-          <article id="pasajes">
-            <h3>Ocupación por tramo</h3>
-            <p>Cada venta ocupa la plaza entre el punto de subida y el de bajada. Boletería puede vender esa misma plaza en otros tramos disponibles del servicio.</p>
-          </article>
-          <article id="convenios">
-            <h3>Venta por convenio</h3>
-            <p>El operador puede habilitar un portal privado para que una empresa gestione los pasajes de su personal. Las condiciones de venta se adaptan a lo acordado con cada cliente.</p>
-          </article>
-          <article id="encomiendas">
-            <h3>Despacho de encomiendas</h3>
-            <p>La agencia de origen registra los bultos que recibe. Las agencias consultan el estado del envío y la oficina de destino registra la entrega.</p>
-          </article>
-        </div>
+      </div>
+    </section>
+    <section class="fleet-management" id="seguimiento" aria-labelledby="titulo-flota">
+      <div class="wrap fleet-management-inner">
+        <h2 id="titulo-flota">Control de flota</h2>
+        <div><h3>Tráfico y seguimiento GPS</h3><p>Tráfico asigna buses y tripulaciones a cada salida, consulta la ubicación de los vehículos en ruta e informa a las agencias que esperan su llegada.</p></div>
+        <div id="planillas"><h3>Planillas y manifiestos de pasajeros</h3><p>El equipo prepara la documentación de cada salida nacional o internacional. Administración puede consultar las planillas del servicio después del cierre.</p></div>
       </div>
     </section>
     <section class="channels" id="integraciones" aria-labelledby="canales-titulo">
@@ -166,9 +200,26 @@
       </div><div class="company-figure"><strong>Más de 60 millones</strong><span>de pasajes vendidos a través de nuestros sistemas</span></div></div>
     </section>
     <section class="contact" id="contact" aria-labelledby="contacto-titulo"><div class="wrap contact-inner">
-      <div><h2 id="contacto-titulo">Conversemos sobre tu flota.</h2>
-        <p>Cuéntanos qué necesitas gestionar en tus agencias y a bordo de tus buses.</p></div>
-      <div class="contact-person"><span>Pablo Barría Genta · Fundador</span><a href="mailto:pablo@bus-kit.com?subject=Consulta%20comercial%20BUSKIT">pablo@bus-kit.com <span aria-hidden="true">↗</span></a></div>
+      <div><h2 id="contacto-titulo">Contacta a BUSKIT</h2>
+        <p>Cuéntanos qué necesita tu empresa. Nuestro equipo comercial te responderá al correo que indiques.</p></div>
+      <form class="contact-form" method="post" action="/api/contacto" aria-labelledby="contacto-titulo">
+        <div class="contact-fields">
+          <label>Empresa<input autocomplete="organization" name="empresa" maxlength="120" required></label>
+          <label>Correo de contacto<input type="email" autocomplete="email" name="correo" maxlength="254" required></label>
+        </div>
+        <label>Sistema de interés<select name="sistema">
+          <option value="general">Consulta general</option>
+          <option value="pasajes">Sistema de pasajes</option>
+          <option value="klap">Venta a bordo con KLAP</option>
+          <option value="convenios">Sistema de convenios</option>
+          <option value="encomiendas">Sistema de encomiendas</option>
+          <option value="flota">Control de flota</option>
+        </select></label>
+        <label>Consulta<textarea name="mensaje" rows="4" maxlength="3000" required></textarea></label>
+        <label hidden>Sitio web<input name="sitio_web" tabindex="-1" autocomplete="off"></label>
+        <button class="button-mint" type="submit">Enviar consulta</button>
+        <p class="contact-status" role="status" aria-live="polite"></p>
+      </form>
     </div></section>
   </main>
   <footer class="footer"><div class="wrap footer-inner"><a class="brand" href="#home" aria-label="BUSKIT, volver al inicio"><img src="assets/buskit-blanco.svg" alt="BUSKIT" width="1916" height="460"></a><span>Gorbea, Chile</span><a href="#home">Volver al inicio ↑</a></div></footer>

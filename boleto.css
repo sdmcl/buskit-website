@@ -1,4 +1,4 @@
-.venta-abordo {
+.pasajes-agencia {
   --tinta-boleto: #073265;
   --texto-boleto: #435d6c;
   --corte-boleto: 74%;
@@ -7,13 +7,13 @@
   color: var(--tinta-boleto);
   background: #f1f7f7;
 }
-.venta-abordo__layout {
+.pasajes-agencia__layout {
   display: grid;
   grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr);
   align-items: center;
   gap: clamp(2.75rem, 7vw, 7.5rem);
 }
-.venta-abordo__intro h2 {
+.pasajes-agencia__intro h2 {
   text-wrap: balance;
   max-width: 13ch;
   margin: 0;
@@ -22,21 +22,21 @@
   line-height: 1.04;
   letter-spacing: -.052em;
 }
-.venta-abordo__intro > p {
+.pasajes-agencia__intro > p {
   max-width: 40ch;
   margin: 1.2rem 0 0;
   color: var(--texto-boleto);
   font-size: clamp(1rem, 1.3vw, 1.13rem);
   line-height: 1.6;
 }
-.venta-abordo__detalle {
+.pasajes-agencia__detalle {
   display: grid;
   gap: .85rem;
   margin: 1.4rem 0 0;
   max-width: 52ch;
 }
-.venta-abordo__detalle dt { font-weight: 650; }
-.venta-abordo__detalle dd {
+.pasajes-agencia__detalle dt { font-weight: 650; }
+.pasajes-agencia__detalle dd {
   margin: .15rem 0 0;
   color: var(--texto-boleto);
   line-height: 1.5;
@@ -64,7 +64,7 @@
 }
 .boleto__imprimir:focus-visible { outline: 3px solid var(--verde-boleto); outline-offset: 3px; }
 .boleto__aviso { color: var(--texto-boleto); font-size: .9rem; }
-.venta-abordo .boleto {
+.pasajes-agencia .boleto {
   min-width: 0;
   margin: 0;
   font-variant-numeric: tabular-nums;
@@ -153,13 +153,13 @@
 .boleto-code { display: block; width: 100%; height: auto; background: white; border: 3px solid white; }
 .boleto-folio { display: block; margin-top: .44rem; overflow-wrap: anywhere; font-size: .72rem; color: #e4f1f3; }
 @media (max-width: 56rem) {
-  .venta-abordo__layout { grid-template-columns: minmax(0, 1fr); gap: 1.75rem; }
-  .venta-abordo__intro h2 { max-width: 20ch; }
-  .venta-abordo__intro > p { max-width: 54ch; }
-  .venta-abordo .boleto { width: min(100%, 40rem); }
+  .pasajes-agencia__layout { grid-template-columns: minmax(0, 1fr); gap: 1.75rem; }
+  .pasajes-agencia__intro h2 { max-width: 20ch; }
+  .pasajes-agencia__intro > p { max-width: 54ch; }
+  .pasajes-agencia .boleto { width: min(100%, 40rem); }
 }
 @media (max-width: 28rem) {
-  .venta-abordo { --corte-boleto: 72%; }
+  .pasajes-agencia { --corte-boleto: 72%; }
   .boleto__papel { grid-template-columns: minmax(0, 72fr) minmax(0, 28fr); }
   .boleto__cuerpo { padding: 1rem; }
   .boleto__datos { gap: .2rem; }
