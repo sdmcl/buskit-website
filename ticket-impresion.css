@@ -44,9 +44,10 @@
       height: auto;
       border-right: .25mm solid #697980;
       border-radius: 1.6mm 0 0 1.6mm;
+      background: white;
     }
 
-    .boleto .boleto-photo img { object-position: 34% center; }
+    .boleto .boleto-photo img { object-fit: contain; object-position: center; }
 
     .boleto .boleto-paper {
       display: grid;

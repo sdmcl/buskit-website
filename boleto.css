@@ -4,7 +4,7 @@
   --billete-linea: #c8d9dc;
   --billete-gris: #435b6a;
   display: grid;
-  grid-template-columns: minmax(0, 36fr) minmax(0, 64fr);
+  grid-template-columns: minmax(0, 44fr) minmax(0, 56fr);
   width: 100%;
   margin: 0;
   color: var(--billete-azul);
