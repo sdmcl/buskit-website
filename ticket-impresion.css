@@ -46,6 +46,8 @@
       border-radius: 1.6mm 0 0 1.6mm;
     }
 
+    .boleto .boleto-photo img { object-position: 34% center; }
+
     .boleto .boleto-paper {
       display: grid;
       grid-template-columns: minmax(0, 64fr) minmax(0, 36fr);
