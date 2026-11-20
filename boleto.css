@@ -81,14 +81,13 @@
         radial-gradient(circle at var(--corte-boleto) 100%, transparent .65rem, black .69rem) bottom / 100% 51% no-repeat;
 }
 .boleto__cuerpo { min-width: 0; padding: clamp(1.2rem, 2.7vw, 2.55rem); }
-.boleto__cabecera { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: .65rem; }
-.boleto__cabecera img { width: clamp(4rem, 6vw, 6.25rem); height: auto; }
-.boleto__cabecera span, .boleto__ruta dt, .boleto__datos dt, .boleto__plaza span, .boleto-folio {
+.boleto__logo { width: clamp(4rem, 6vw, 6.25rem); height: auto; }
+.boleto__ruta dt, .boleto__datos dt, .boleto__plaza span, .boleto-folio {
   font-size: .76rem;
   line-height: 1.3;
   font-weight: 550;
 }
-.boleto__cabecera span, .boleto__ruta dt, .boleto__datos dt { color: var(--texto-boleto); }
+.boleto__ruta dt, .boleto__datos dt { color: var(--texto-boleto); }
 .boleto__ruta { margin: clamp(1.45rem, 3vw, 2.9rem) 0 1.3rem; padding: 0; }
 .boleto__ruta > div { position: relative; padding-left: 1.3rem; }
 .boleto__ruta > div:not(:last-child) { padding-bottom: .7rem; }
@@ -163,8 +162,6 @@
   .venta-abordo { --corte-boleto: 72%; }
   .boleto__papel { grid-template-columns: minmax(0, 72fr) minmax(0, 28fr); }
   .boleto__cuerpo { padding: 1rem; }
-  .boleto__cabecera { align-items: flex-start; flex-direction: column; }
-  .boleto__cabecera span { font-size: .7rem; }
   .boleto__datos { gap: .2rem; }
   .boleto__datos dd { font-size: .94rem; }
   .boleto__talon { padding-inline: .6rem; }

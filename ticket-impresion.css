@@ -37,8 +37,7 @@
     color: #0c3558;
   }
   body.imprimir-boleto .boleto__cuerpo { padding: 6mm 8mm; }
-  body.imprimir-boleto .boleto__cabecera { flex-direction: row; }
-  body.imprimir-boleto .boleto__cabecera img { width: 24mm; }
+  body.imprimir-boleto .boleto__logo { width: 24mm; }
   body.imprimir-boleto .boleto__ruta { margin: 6mm 0; }
   body.imprimir-boleto .boleto__ruta dd { font-size: 20pt; }
   body.imprimir-boleto .boleto__talon { padding: 6mm; border-color: #596d78; background: white; }
