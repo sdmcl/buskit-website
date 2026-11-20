@@ -1,948 +1,235 @@
-<!DOCTYPE html>
-<html lang="es">
+<!doctype html>
+<html lang="es-CL">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BusKIT - Soluciones Integrales para el Transporte</title>
-    <link rel="icon" type="image/png" href="logo-buskit.png">
-    
-    <!-- Meta tags para SEO -->
-    <meta name="description" content="BusKIT+ es el ecosistema integral de gestión para empresas de transporte. Desde 2007 desarrollando plataformas para buses en Chile. Odoo Partner Ready.">
-    <meta name="keywords" content="BusKIT, software buses, gestión transporte, Odoo ERP, Chile, Gorbea">
-    <meta name="author" content="Pablo Barría Genta">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.bus-kit.com/">
-    <meta property="og:title" content="BusKIT - Soluciones Integrales para el Transporte">
-    <meta property="og:description" content="Ecosistema integral de gestión para empresas de transporte. Más de 18 años de experiencia.">
-    <meta property="og:image" content="https://www.bus-kit.com/logo-buskit.png">
-    
-    <!-- Google Material Icons -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    
-    <style>
-        :root {
-            --primary-blue: #2B4C8C;
-            --primary-green: #4ECDC4;
-            --primary-red: #E74C3C;
-            --secondary-blue: #5DA9E9;
-            --secondary-green: #26A69A;
-            --text-primary: #212121;
-            --text-secondary: #757575;
-            --background-light: #F5F5F5;
-            --background-white: #FFFFFF;
-            --border-light: #E0E0E0;
-            --icon-grey: #757575;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            color: var(--text-primary);
-            line-height: 1.6;
-            overflow-x: hidden;
-            background: var(--background-white);
-        }
-
-        /* BusKIT+ Brand Styling */
-        .brand-name {
-            font-weight: 700;
-            font-size: inherit;
-        }
-        
-        .brand-bus {
-            color: var(--primary-blue);
-        }
-        
-        .brand-kit {
-            color: var(--primary-green);
-        }
-        
-        .brand-plus {
-            color: var(--primary-red);
-        }
-
-        /* Header */
-        header {
-            background: var(--background-white);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            transition: all 0.3s ease;
-        }
-
-        nav {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 1.5rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-        }
-
-        .logo img {
-            height: 29px;
-            width: auto;
-            transition: transform 0.3s ease;
-        }
-
-        .logo img:hover {
-            transform: scale(1.05);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-primary);
-            transition: color 0.3s ease;
-            font-weight: 500;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary-green);
-        }
-
-        /* Hero Section */
-        .hero {
-            margin-top: 80px;
-            min-height: calc(100vh - 80px);
-            background: linear-gradient(135deg, var(--background-light) 0%, var(--background-white) 100%);
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .hero-text h1 {
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
-            line-height: 1.2;
-            animation: fadeInUp 1s ease;
-        }
-
-        .hero-text .tagline {
-            font-size: 1.5rem;
-            color: var(--primary-green);
-            margin-bottom: 1rem;
-            animation: fadeInUp 1s ease 0.2s;
-            animation-fill-mode: both;
-        }
-
-        .hero-text p {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-            animation: fadeInUp 1s ease 0.4s;
-            animation-fill-mode: both;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: var(--primary-green);
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 30px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            animation: fadeInUp 1s ease 0.6s;
-            animation-fill-mode: both;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(78, 205, 196, 0.3);
-        }
-
-        .hero-visual {
-            position: relative;
-            animation: float 6s ease-in-out infinite;
-        }
-
-        .ecosystem-preview {
-            background: white;
-            border-radius: 20px;
-            padding: 2rem;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
-        }
-
-        .ecosystem-preview h3 {
-            text-align: center;
-            margin-bottom: 1rem;
-            color: var(--primary-blue);
-        }
-
-        .ecosystem-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
-        }
-
-        .module-icon {
-            background: var(--background-light);
-            padding: 1rem;
-            border-radius: 10px;
-            text-align: center;
-            font-size: 0.8rem;
-            transition: all 0.3s ease;
-            color: var(--text-secondary);
-            border: 1px solid var(--border-light);
-        }
-
-        .module-icon .material-icons {
-            display: block;
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-            color: var(--icon-grey);
-        }
-
-        .module-icon:hover {
-            transform: translateY(-5px);
-            background: var(--primary-green);
-            color: white;
-            border-color: var(--primary-green);
-        }
-
-        .module-icon:hover .material-icons {
-            color: white;
-        }
-
-        /* Services Section */
-        .services {
-            padding: 5rem 2rem;
-            background: var(--background-white);
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 50px;
-            height: 3px;
-            background: var(--primary-green);
-        }
-
-        .services-grid {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-
-        .service-card {
-            background: var(--background-light);
-            padding: 2rem;
-            border-radius: 15px;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border: 1px solid transparent;
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            border-color: var(--primary-green);
-        }
-
-        .service-card .material-icons {
-            font-size: 2.5rem;
-            color: var(--primary-blue);
-            margin-bottom: 1rem;
-            opacity: 0.8;
-        }
-
-        .service-card h3 {
-            color: var(--primary-blue);
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-        }
-
-        .service-card .modules {
-            margin-top: 1rem;
-        }
-
-        .service-card .module-tag {
-            display: inline-block;
-            background: white;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            margin: 0.2rem;
-            color: var(--text-secondary);
-        }
-
-        /* Features Section */
-        .features {
-            padding: 5rem 2rem;
-            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .features::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 200%;
-            height: 200%;
-            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-            animation: drift 20s linear infinite;
-        }
-
-        .features-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .feature-item {
-            text-align: center;
-            padding: 2rem;
-            background: rgba(255,255,255,0.1);
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-        }
-
-        .feature-item:hover {
-            background: rgba(255,255,255,0.2);
-            transform: translateY(-5px);
-        }
-
-        .feature-item .material-icons {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            opacity: 0.9;
-        }
-
-        /* Clients Section */
-        .clients {
-            padding: 5rem 2rem;
-            background: var(--background-light);
-        }
-
-        .clients-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .clients-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 3rem;
-            margin-top: 3rem;
-            align-items: center;
-        }
-
-        .client-item {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 120px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-        }
-
-        .client-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-        }
-
-        .client-item img {
-            max-width: 150px;
-            max-height: 60px;
-            width: auto;
-            height: auto;
-            opacity: 0.8;
-            transition: opacity 0.3s ease;
-        }
-
-        .client-item:hover img {
-            opacity: 1;
-        }
-
-        /* About Section */
-        .about {
-            padding: 5rem 2rem;
-            background: var(--background-white);
-        }
-
-        .about-content {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .about-content p {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-            line-height: 1.8;
-        }
-
-        .location-badge, .experience-badge {
-            display: inline-block;
-            background: var(--background-light);
-            padding: 1rem 2rem;
-            border-radius: 30px;
-            margin-top: 1rem;
-            margin-right: 1rem;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .experience-badge {
-            background: var(--primary-blue);
-            color: white;
-            box-shadow: 0 4px 15px rgba(43, 76, 140, 0.2);
-        }
-
-        .experience-badge:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(43, 76, 140, 0.3);
-        }
-
-        .experience-badge .separator {
-            margin: 0 1rem;
-            opacity: 0.5;
-        }
-
-        .location-badge span {
-            font-weight: 600;
-            color: var(--primary-blue);
-        }
-
-        /* Partners */
-        .partners {
-            padding: 3rem 2rem;
-            background: var(--background-white);
-        }
-
-        .partners-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .partners-logos {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 4rem;
-            margin-top: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .partner-item {
-            opacity: 0.7;
-            transition: opacity 0.3s ease;
-        }
-
-        .partner-item:hover {
-            opacity: 1;
-        }
-
-        /* Contact */
-        .contact {
-            padding: 5rem 2rem;
-            background: var(--background-light);
-        }
-
-        .contact-content {
-            max-width: 600px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .contact-info {
-            background: var(--background-white);
-            padding: 2rem;
-            border-radius: 15px;
-            margin-top: 2rem;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-        }
-
-        .contact-info a {
-            color: var(--primary-green);
-            text-decoration: none;
-            font-size: 1.2rem;
-            font-weight: 600;
-        }
-
-        /* Footer */
-        footer {
-            background: var(--primary-blue);
-            color: white;
-            padding: 3rem 2rem;
-            text-align: center;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .footer-logo {
-            margin-bottom: 1rem;
-        }
-
-        .footer-love {
-            margin-top: 2rem;
-            font-size: 0.9rem;
-            opacity: 0.9;
-            font-weight: 300;
-        }
-
-        .footer-love .material-icons {
-            font-size: 1rem;
-            vertical-align: middle;
-            margin: 0 0.2rem;
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-
-        @keyframes drift {
-            from { transform: translate(0, 0); }
-            to { transform: translate(-100px, -100px); }
-        }
-
-        /* Mobile Responsive */
-        .mobile-menu {
-            display: none;
-            cursor: pointer;
-            font-size: 1.5rem;
-        }
-
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .mobile-menu {
-                display: block;
-            }
-
-            .logo img {
-                height: 24px;
-            }
-
-            .hero-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .hero-text h1 {
-                font-size: 2rem;
-            }
-
-            .hero-visual {
-                display: none;
-            }
-
-            .ecosystem-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .partners-logos {
-                gap: 2rem;
-            }
-
-            .experience-badge, .location-badge {
-                display: block;
-                margin: 1rem auto;
-                text-align: center;
-                max-width: 300px;
-            }
-
-            .clients-grid {
-                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-                gap: 1.5rem;
-            }
-        }
-
-        /* Scroll reveal effect */
-        .reveal {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 1s ease;
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BusKIT | Software para empresas de buses</title>
+  <meta name="description" content="Pasajes, encomiendas y seguimiento de buses en una plataforma para operadores de transporte. Integraciones con Recorrido.cl, Kupos.cl y Odoo.">
+  <meta name="theme-color" content="#073265">
+  <link rel="canonical" href="https://www.bus-kit.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_CL">
+  <meta property="og:site_name" content="BusKIT">
+  <meta property="og:title" content="BusKIT | Software para empresas de buses">
+  <meta property="og:description" content="Pasajes, encomiendas y seguimiento de buses. Desde la agencia hasta el destino.">
+  <meta property="og:url" content="https://www.bus-kit.com/">
+  <meta property="og:image" content="https://www.bus-kit.com/assets/bus-en-ruta.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/svg+xml" href="assets/buskit-logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=DM+Sans:wght@400..700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-    <!-- Header -->
-    <header id="header">
-        <nav>
-            <div class="logo">
-                <img src="logo-buskit.png" alt="BusKIT" height="29">
-            </div>
-            <ul class="nav-links">
-                <li><a href="#home">Inicio</a></li>
-                <li><a href="#services">Soluciones</a></li>
-                <li><a href="#features">Características</a></li>
-                <li><a href="#clients">Clientes</a></li>
-                <li><a href="#about">Nosotros</a></li>
-                <li><a href="#contact">Contacto</a></li>
-            </ul>
-            <div class="mobile-menu">≡</div>
-        </nav>
-    </header>
+<body id="home">
+  <a class="skip-link" href="#contenido">Ir al contenido</a>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="#home" aria-label="BusKIT, inicio">
+        <img src="assets/buskit-logo.svg" alt="BusKIT" width="1916" height="460">
+      </a>
+      <nav class="main-nav" aria-label="Navegación principal">
+        <a href="#services">Sistemas</a>
+        <a href="#integraciones">Integraciones</a>
+        <a href="#clients">Clientes</a>
+      </nav>
+      <a class="button button-header" href="#contact">Hablemos</a>
+    </div>
+  </header>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="hero-content">
-            <div class="hero-text">
-                <h1>Transforma tu empresa de transporte</h1>
-                <p class="tagline">Suma eficiencia a tu operación</p>
-                <p><span class="brand-name"><span class="brand-bus">Bus</span><span class="brand-kit">KIT</span><span class="brand-plus">+</span></span> es el ecosistema integral de gestión diseñado específicamente para empresas de buses. Desde la venta de pasajes hasta el control de flota, todo en un solo lugar. Con más de 18 años de experiencia en el sector.</p>
-                <a href="#contact" class="cta-button">Conoce más</a>
-            </div>
-            <div class="hero-visual">
-                <div class="ecosystem-preview">
-                    <h3>Ecosistema <span class="brand-name"><span class="brand-bus">Bus</span><span class="brand-kit">KIT</span><span class="brand-plus">+</span></span></h3>
-                    <div class="ecosystem-grid">
-                        <div class="module-icon"><span class="material-icons">confirmation_number</span>Venta Pasajes</div>
-                        <div class="module-icon"><span class="material-icons">directions_bus</span>Control Flota</div>
-                        <div class="module-icon"><span class="material-icons">point_of_sale</span>Cajas y Depósitos</div>
-                        <div class="module-icon"><span class="material-icons">inventory_2</span>Carga y Encomiendas</div>
-                        <div class="module-icon"><span class="material-icons">local_gas_station</span>Control Petróleo</div>
-                        <div class="module-icon"><span class="material-icons">checklist</span>Check List Asistentes</div>
-                        <div class="module-icon"><span class="material-icons">shopping_cart</span>Venta Abordo</div>
-                        <div class="module-icon"><span class="material-icons">analytics</span>Analytics</div>
-                        <div class="module-icon"><span class="material-icons">more_horiz</span>Y muchos más</div>
-                    </div>
-                </div>
-            </div>
+  <main id="contenido" tabindex="-1">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-media">
+        <img src="assets/bus-en-ruta.jpg" width="1672" height="941" alt="" fetchpriority="high">
+      </div>
+      <div class="wrap hero-inner">
+        <div class="hero-copy">
+          <h1 id="hero-title">Desde la agencia<br class="hero-break"> hasta el destino.</h1>
+          <p>Pasajes, encomiendas y seguimiento de buses en una plataforma hecha para empresas de transporte.</p>
+          <div class="hero-actions">
+            <a class="button button-light" href="#contact">Solicitar una demo</a>
+            <a class="button button-outline" href="#services">Explorar sistemas</a>
+          </div>
         </div>
+      </div>
+      <div class="hero-deck">
+        <div class="wrap hero-deck-inner">
+          <a class="deck-stop" href="#pasajes">Pasajes</a>
+          <a class="deck-stop" href="#encomiendas">Encomiendas</a>
+          <a class="deck-stop" href="#seguimiento">Seguimiento</a>
+        </div>
+      </div>
     </section>
 
-    <!-- Services Section -->
-    <section class="services reveal" id="services">
-        <h2 class="section-title">Nuestras Soluciones</h2>
-        <div class="services-grid">
-            <div class="service-card">
-                <span class="material-icons">dashboard</span>
-                <h3><span class="brand-name"><span class="brand-bus">Bus</span><span class="brand-kit">KIT</span><span class="brand-plus">+</span></span> Sistema de Transporte</h3>
-                <p>Solución integral para la gestión completa de tu empresa de buses. Desarrollo a medida con múltiples aplicaciones complementarias.</p>
-                <div class="modules">
-                    <span class="module-tag">Venta de Pasajes</span>
-                    <span class="module-tag">Gestión de Flotas</span>
-                    <span class="module-tag">Venta Abordo</span>
-                    <span class="module-tag">Carga y Encomiendas</span>
-                    <span class="module-tag">Control de Petróleo</span>
-                    <span class="module-tag">Check Lists</span>
-                    <span class="module-tag">Analytics</span>
-                </div>
-            </div>
-            <div class="service-card">
-                <span class="material-icons">business</span>
-                <h3>Odoo ERP</h3>
-                <p>Como Partner Ready de Odoo, implementamos y personalizamos el ERP más versátil del mercado para optimizar todos tus procesos empresariales.</p>
-                <div class="modules">
-                    <span class="module-tag">Ventas</span>
-                    <span class="module-tag">Contabilidad</span>
-                    <span class="module-tag">Inventario</span>
-                    <span class="module-tag">RRHH</span>
-                    <span class="module-tag">CRM</span>
-                    <span class="module-tag">Manufactura</span>
-                </div>
-            </div>
-            <div class="service-card">
-                <span class="material-icons">hub</span>
-                <h3>Integraciones</h3>
-                <p>Conectamos tu sistema con las principales plataformas del mercado para maximizar tu alcance y eficiencia operativa.</p>
-                <div class="modules">
-                    <span class="module-tag">Recorrido.cl</span>
-                    <span class="module-tag">APIs REST</span>
-                    <span class="module-tag">Pasarelas de Pago</span>
-                    <span class="module-tag">Sistemas Contables</span>
-                </div>
-            </div>
+    <section class="section systems" id="services" aria-labelledby="systems-title">
+      <div class="wrap">
+        <div class="section-intro">
+          <h2 id="systems-title">El software detrás de cada viaje</h2>
+          <p>Una misma plataforma para vender en agencia, mover encomiendas y saber qué está pasando en ruta.</p>
         </div>
+
+        <div class="solution-list" id="features">
+          <article class="solution" id="pasajes" aria-labelledby="pasajes-title">
+            <div class="solution-copy">
+              <h3 id="pasajes-title">Venta de pasajes</h3>
+              <p>Gestiona salidas, tarifas y disponibilidad de asientos. Emite pasajes en agencia y controla las ventas y los movimientos de caja.</p>
+              <ul class="benefits">
+                <li>Salidas y mapas de asientos</li>
+                <li>Emisión, cambios y anulaciones</li>
+                <li>Control y cierre de caja</li>
+              </ul>
+            </div>
+            <figure class="product-board ticket-board">
+              <figcaption>Ejemplo de un pasaje</figcaption>
+              <div class="ticket">
+                <div class="ticket-main">
+                  <span class="ticket-label">Servicio interurbano</span>
+                  <div class="ticket-route">
+                    <span>Puerto Montt</span>
+                    <i class="direction-line" aria-hidden="true"></i>
+                    <span>Castro</span>
+                  </div>
+                  <dl class="ticket-meta">
+                    <div><dt>Salida</dt><dd>08:30</dd></div>
+                    <div><dt>Servicio</dt><dd>Salón cama</dd></div>
+                  </dl>
+                </div>
+                <div class="ticket-stub">
+                  <span>Asiento</span>
+                  <strong>09</strong>
+                  <i class="barcode" aria-hidden="true"></i>
+                </div>
+              </div>
+            </figure>
+          </article>
+
+          <article class="solution solution-reversed" id="encomiendas" aria-labelledby="encomiendas-title">
+            <div class="solution-copy">
+              <h3 id="encomiendas-title">Encomiendas</h3>
+              <p>Registra bultos en sucursal, emite etiquetas y controla el despacho. Consulta qué pasó con cada envío desde la recepción hasta la entrega.</p>
+              <ul class="benefits">
+                <li>Recepción y etiquetado de bultos</li>
+                <li>Despacho y recepción en destino</li>
+                <li>Trazabilidad de cada movimiento</li>
+              </ul>
+            </div>
+            <figure class="product-board cargo-board">
+              <figcaption>Ejemplo de trazabilidad</figcaption>
+              <div class="cargo-slip">
+                <div class="cargo-top">
+                  <div><span class="ticket-label">Encomienda</span><strong>Temuco a Osorno</strong></div>
+                  <span class="cargo-count">2 bultos</span>
+                </div>
+                <ol class="cargo-list">
+                  <li><span>Recepción</span><small>Agencia de origen</small></li>
+                  <li><span>Despacho</span><small>En tránsito</small></li>
+                  <li><span>Entrega</span><small>En destino</small></li>
+                </ol>
+              </div>
+            </figure>
+          </article>
+
+          <article class="solution" id="seguimiento" aria-labelledby="seguimiento-title">
+            <div class="solution-copy">
+              <h3 id="seguimiento-title">Seguimiento de buses</h3>
+              <p>Ubica los buses de tu operación mediante GPS. Con <strong>¿Dónde viene mi bus?</strong>, el pasajero consulta el bus asignado y, cuando hay señal, su llegada estimada al punto de subida.</p>
+              <ul class="benefits">
+                <li>Ubicación y hora de actualización</li>
+                <li>Consulta del viaje del pasajero</li>
+                <li>Estimación de llegada a la subida</li>
+              </ul>
+            </div>
+            <figure class="product-board map-board">
+              <figcaption>Ejemplo de seguimiento</figcaption>
+              <div class="map-grid" aria-hidden="true">
+                <span class="map-route"></span>
+                <span class="map-point map-start"></span>
+                <span class="map-point map-bus"></span>
+                <span class="map-point map-end"></span>
+              </div>
+              <div class="map-status">
+                <span class="ticket-label">Llegada a tu subida</span>
+                <strong>12 min</strong>
+                <span>Estimación</span>
+              </div>
+            </figure>
+          </article>
+        </div>
+      </div>
     </section>
 
-    <!-- Features Section -->
-    <section class="features reveal" id="features">
-        <div class="features-content">
-            <h2 class="section-title">¿Por qué elegir <span class="brand-name"><span class="brand-bus">Bus</span><span class="brand-kit">KIT</span><span class="brand-plus">+</span></span>?</h2>
-            <div class="features-grid">
-                <div class="feature-item">
-                    <span class="material-icons">engineering</span>
-                    <h3>Desarrollo a Medida</h3>
-                    <p>Soluciones personalizadas que se adaptan exactamente a las necesidades de tu empresa</p>
-                </div>
-                <div class="feature-item">
-                    <span class="material-icons">widgets</span>
-                    <h3>Ecosistema Modular</h3>
-                    <p>Múltiples aplicaciones que trabajan en conjunto para cubrir todas las áreas de tu operación</p>
-                </div>
-                <div class="feature-item">
-                    <span class="material-icons">sync</span>
-                    <h3>Integración Total</h3>
-                    <p>Conectado con Recorrido.cl y otras plataformas clave del mercado</p>
-                </div>
-                <div class="feature-item">
-                    <span class="material-icons">devices</span>
-                    <h3>Multiplataforma</h3>
-                    <p>Accede desde cualquier dispositivo: web, móvil o escritorio</p>
-                </div>
-            </div>
+    <section class="section integration" id="integraciones" aria-labelledby="integration-title">
+      <div class="wrap integration-inner">
+        <div class="section-intro">
+          <h2 id="integration-title">Conecta tus canales y tu gestión</h2>
+          <p>Vincula la operación de transporte con los canales de venta y los procesos administrativos de tu empresa.</p>
         </div>
+
+        <div class="integration-grid">
+          <article class="odoo-panel">
+            <span class="partner-label">Partner Odoo</span>
+            <h3>Odoo ERP</h3>
+            <p>Implementamos y adaptamos Odoo a procesos como ventas, inventario y contabilidad.</p>
+            <a href="https://www.odoo.com/es" class="text-link">Conocer Odoo</a>
+          </article>
+          <div class="channels">
+            <article>
+              <h3><a href="https://www.recorrido.cl/es">Recorrido.cl</a></h3>
+              <p>Integra el canal de venta en línea con la operación de pasajes.</p>
+            </article>
+            <article>
+              <h3><a href="https://kupos.cl/">Kupos.cl</a></h3>
+              <p>Consulta las ventas de Kupos.cl desde tu operación de agencia.</p>
+            </article>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- Clients Section -->
-    <section class="clients reveal" id="clients">
-        <div class="clients-content">
-            <h2 class="section-title">Nuestros Clientes</h2>
-            <div class="clients-grid">
-                <div class="client-item">
-                    <img src="buses-etm-logo.png" alt="Buses ETM">
-                </div>
-                <div class="client-item">
-                    <img src="buses-queilen-bus-logo.png" alt="Buses QueilenBus">
-                </div>
-                <div class="client-item">
-                    <img src="buses-fierro-logo.png" alt="Buses Fierro">
-                </div>
-                <div class="client-item">
-                    <img src="buses-talca-paris-y-londres-logo.png" alt="Buses Talca París & Londres">
-                </div>
-                <div class="client-item">
-                    <img src="buses-via-lago-sur-logo.png" alt="Buses Lago Sur">
-                </div>
-                <div class="client-item">
-                    <img src="buses-bus-sur-logo.png" alt="Buses Bus-Sur">
-                </div>
-                <div class="client-item">
-                    <img src="tpl-cargo-logo.png" alt="TPL Cargo">
-                </div>
-                <div class="client-item">
-                    <img src="buses-bus-sur-cargo-logo.png" alt="Bus-Sur Cargo">
-                </div>
-				<div class="client-item">
-                    <img src="ferreteria-dimasur-logo.png" alt="Bus-Sur Cargo">
-                </div>
-            </div>
+    <section class="section clients" id="clients" aria-labelledby="clients-title">
+      <div class="wrap">
+        <div class="section-intro">
+          <h2 id="clients-title">Empresas que trabajan con BusKIT</h2>
         </div>
+        <ul class="client-logos" aria-label="Clientes de BusKIT">
+          <li><img src="buses-etm-logo.png" alt="Buses ETM" loading="lazy" width="128" height="56"></li>
+          <li><img src="buses-queilen-bus-logo.png" alt="QueilenBus" loading="lazy" width="128" height="56"></li>
+          <li><img src="buses-fierro-logo.png" alt="Buses Fierro" loading="lazy" width="128" height="56"></li>
+          <li><img src="buses-talca-paris-y-londres-logo.png" alt="Talca, París y Londres" loading="lazy" width="128" height="56"></li>
+          <li><img src="buses-via-lago-sur-logo.png" alt="Vía Lago Sur" loading="lazy" width="128" height="56"></li>
+          <li><img src="buses-bus-sur-logo.png" alt="Bus-Sur" loading="lazy" width="128" height="56"></li>
+          <li><img src="tpl-cargo-logo.png" alt="TPL Cargo" loading="lazy" width="128" height="56"></li>
+          <li><img src="buses-bus-sur-cargo-logo.png" alt="Bus-Sur Cargo" loading="lazy" width="128" height="56"></li>
+          <li><img src="ferreteria-dimasur-logo.png" alt="Dimasur" loading="lazy" width="128" height="56"></li>
+        </ul>
+        <div class="about" id="about">
+          <p>Desde 2007 desarrollamos en Chile software para el transporte de pasajeros y carga. Con nuestros sistemas se han vendido más de 60 millones de pasajes.</p>
+          <p><strong>Pablo Barría Genta</strong><br><span>Fundador de BusKIT</span></p>
+        </div>
+      </div>
     </section>
 
-    <!-- About Section -->
-    <section class="about reveal" id="about">
-        <div class="about-content">
-            <h2 class="section-title">Sobre Nosotros</h2>
-            <p>
-                Soy Pablo Barría Genta, CEO y fundador de BusKIT. Desde 2007 desarrollando plataformas para buses en Chile, con más de 18 años de experiencia en el desarrollo de soluciones tecnológicas para el sector del transporte, creé <span class="brand-name"><span class="brand-bus">Bus</span><span class="brand-kit">KIT</span><span class="brand-plus">+</span></span> para revolucionar la forma en que las empresas de buses gestionan sus operaciones.
-            </p>
-            <p>
-                Como Odoo Partner Ready, combinamos la potencia del ERP líder mundial con nuestras soluciones especializadas en transporte, ofreciendo a nuestros clientes las herramientas más avanzadas del mercado.
-            </p>
-            <div class="experience-badge">
-                <span>+18 años</span>
-                <span class="separator">•</span>
-                <span>Desde 2007</span>
-            </div>
-            <div class="location-badge">
-                <span>+60.000.000 de pasajes vendidos</span>
-            </div>
+    <section class="contact" id="contact" aria-labelledby="contact-title">
+      <div class="wrap contact-inner">
+        <div>
+          <h2 id="contact-title">Hablemos de tu operación</h2>
+          <p>Cuéntanos qué necesitas gestionar y coordinemos una demo de BusKIT.</p>
         </div>
+        <div class="contact-actions">
+          <a class="button button-light" href="mailto:pablo@bus-kit.com?subject=Solicitud%20de%20demo%20BusKIT">Solicitar una demo por correo</a>
+          <a href="mailto:pablo@bus-kit.com">pablo@bus-kit.com</a>
+        </div>
+      </div>
     </section>
+  </main>
 
-    <!-- Partners Section -->
-    <section class="partners reveal">
-        <div class="partners-content">
-            <h2 class="section-title">Nuestros Partners</h2>
-            <div class="partners-logos">
-                <div class="partner-item">
-                    <img src="data:image/svg+xml,%3Csvg width='150' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' font-family='Arial' font-size='24' font-weight='bold' fill='%23875A7B'%3EOdoo%3C/text%3E%3Ctext x='50%25' y='75%25' text-anchor='middle' font-family='Arial' font-size='12' fill='%23666'%3EPartner Ready%3C/text%3E%3C/svg%3E" alt="Odoo Partner Ready">
-                </div>
-                <div class="partner-item">
-                    <img src="data:image/svg+xml,%3Csvg width='150' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' font-family='Arial' font-size='20' font-weight='bold' fill='%232B4C8C'%3ERecorrido.cl%3C/text%3E%3C/svg%3E" alt="Recorrido.cl">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="contact reveal" id="contact">
-        <div class="contact-content">
-            <h2 class="section-title">Contacto</h2>
-            <p>¿Listo para transformar tu empresa de transporte? Conversemos sobre cómo <span class="brand-name"><span class="brand-bus">Bus</span><span class="brand-kit">KIT</span><span class="brand-plus">+</span></span> puede optimizar tus operaciones.</p>
-            <div class="contact-info">
-                <p><strong>Pablo Barría Genta</strong></p>
-                <p>CEO & Fundador</p>
-                <p style="margin-top: 1rem;">
-                    <a href="mailto:pablo@bus-kit.com">pablo@bus-kit.com</a>
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-logo">
-                <img src="logo-buskit.png" alt="BusKIT" height="29" style="filter: brightness(0) invert(1); opacity: 0.9;">
-            </div>
-            <p>&copy; 2025 BusKIT. Todos los derechos reservados.</p>
-            <p class="footer-love">
-                Desarrollado desde <span class="material-icons">terrain</span> cerro Maulén, Gorbea, Chile
-            </p>
-        </div>
-    </footer>
-
-    <script>
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
-        });
-
-        // Logo click - scroll to top
-        document.querySelector('.logo').addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-
-        // Header scroll effect
-        let lastScroll = 0;
-        window.addEventListener('scroll', () => {
-            const currentScroll = window.pageYOffset;
-            const header = document.getElementById('header');
-            
-            if (currentScroll > 100) {
-                header.style.background = 'rgba(255, 255, 255, 0.95)';
-                header.style.backdropFilter = 'blur(10px)';
-            } else {
-                header.style.background = 'var(--background-white)';
-                header.style.backdropFilter = 'none';
-            }
-        });
-
-        // Reveal animations
-        const reveals = document.querySelectorAll('.reveal');
-        
-        function checkReveal() {
-            reveals.forEach(element => {
-                const windowHeight = window.innerHeight;
-                const elementTop = element.getBoundingClientRect().top;
-                const elementVisible = 150;
-                
-                if (elementTop < windowHeight - elementVisible) {
-                    element.classList.add('active');
-                }
-            });
-        }
-
-        window.addEventListener('scroll', checkReveal);
-        checkReveal(); // Check on load
-
-        // Mobile menu toggle
-        const mobileMenu = document.querySelector('.mobile-menu');
-        const navLinks = document.querySelector('.nav-links');
-        
-        mobileMenu.addEventListener('click', () => {
-            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
-            navLinks.style.position = 'absolute';
-            navLinks.style.top = '100%';
-            navLinks.style.left = '0';
-            navLinks.style.width = '100%';
-            navLinks.style.background = 'white';
-            navLinks.style.flexDirection = 'column';
-            navLinks.style.padding = '2rem';
-            navLinks.style.boxShadow = '0 10px 30px rgba(0,0,0,0.1)';
-        });
-
-        // Typing effect for tagline
-        const tagline = document.querySelector('.tagline');
-        const text = tagline.textContent;
-        tagline.textContent = '';
-        let i = 0;
-        
-        function typeWriter() {
-            if (i < text.length) {
-                tagline.textContent += text.charAt(i);
-                i++;
-                setTimeout(typeWriter, 100);
-            }
-        }
-        
-        setTimeout(typeWriter, 1000);
-    </script>
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <a class="brand" href="#home" aria-label="BusKIT, volver al inicio">
+        <img src="assets/buskit-logo.svg" alt="BusKIT" width="1916" height="460">
+      </a>
+      <p>Desarrollado en Gorbea, Chile.</p>
+    </div>
+  </footer>
 </body>
 </html>
