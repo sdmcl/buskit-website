@@ -10,6 +10,7 @@
   body.imprimir-boleto > :not(main),
   body.imprimir-boleto main > :not(.venta-abordo),
   body.imprimir-boleto .venta-abordo__intro { display: none !important; }
+  .boleto__acciones { display: none !important; }
 
   body.imprimir-boleto main,
   body.imprimir-boleto .venta-abordo,

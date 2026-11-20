@@ -11,7 +11,7 @@
   <meta property="og:locale" content="es_CL">
   <meta property="og:site_name" content="BUSKIT">
   <meta property="og:title" content="BUSKIT | Control de flota para empresas de buses">
-  <meta property="og:description" content="De la programación de salidas a la rendición de caja. Explora un viaje simulado con BUSKIT.">
+  <meta property="og:description" content="Control de flota y venta de pasajes para empresas de buses. Gestiona las ventas en agencia, a bordo con KLAP, en línea y por convenio.">
   <meta property="og:url" content="https://www.bus-kit.com/">
   <meta property="og:image" content="https://www.bus-kit.com/assets/buskit-en-ruta.webp">
   <meta name="twitter:card" content="summary_large_image">
@@ -22,8 +22,6 @@
   <link rel="stylesheet" href="ticket-impresion.css" media="print">
   <script src="navegacion.js" defer></script>
   <script src="boleto.js" defer></script>
-  <script src="viaje.js" defer></script>
-  <script src="sistemas.js" defer></script>
 </head>
 <body id="home">
   <a class="skip" href="#contenido">Saltar al contenido</a>
@@ -36,7 +34,7 @@
         <a href="#integraciones">Integraciones</a>
         <a href="#about">Empresa</a>
       </nav>
-      <a class="nav-contact" href="#contact">Solicitar demo <span class="diagonal" aria-hidden="true">↗</span></a>
+      <a class="nav-contact" href="#contact">Contactar a BUSKIT <span class="diagonal" aria-hidden="true">↗</span></a>
       <button class="menu-trigger" hidden type="button" aria-controls="menu-principal" aria-expanded="false" aria-label="Abrir menú"><span aria-hidden="true"></span></button>
     </div>
   </header>
@@ -50,24 +48,12 @@
         <div class="wrap landscape-inner">
           <div class="opening-copy">
             <h1 id="portada-titulo">Control de flota para empresas de buses.</h1>
-            <p>Programa tus salidas, coordina a tu tripulación y controla lo recaudado en agencia y a bordo.</p>
+            <p>Programa cada salida con su bus y tripulación. Consulta las ventas por tramo y controla la recaudación de tus agencias y de cada bus.</p>
             <div class="hero-links">
-              <a class="button-mint" href="#services">Explorar los sistemas <span class="arrow-right" aria-hidden="true"></span></a>
-              <a class="link-demo" href="#venta-a-bordo">Probar venta a bordo</a>
+              <a class="button-mint" href="#venta-a-bordo">Venta de pasajes <span class="arrow-right" aria-hidden="true"></span></a>
+              <a class="hero-secondary" href="#services">Ver todos los sistemas</a>
             </div>
           </div>
-          <div class="bus-tag" aria-hidden="true"><i></i><span>Máquina 18</span><b data-viaje-estado>En servicio</b></div>
-        </div>
-      </div>
-      <div class="fleet-strip">
-        <div class="wrap strip-inner">
-          <div class="run-title"><i class="track-icon" aria-hidden="true"><b></b></i><div><span>Recorrido simulado</span><strong>Puerto Montt a Santiago</strong></div></div>
-          <div class="route-control" role="group" aria-label="Paradas del recorrido simulado">
-            <button type="button" disabled aria-pressed="true" data-estado="En servicio"><i aria-hidden="true"></i><span>Puerto Montt</span><time datetime="08:30">08:30</time></button>
-            <button type="button" disabled aria-pressed="false" data-estado="En ruta"><i aria-hidden="true"></i><span>Temuco</span><time datetime="13:30">13:30</time></button>
-            <button type="button" disabled aria-pressed="false" data-estado="En destino"><i aria-hidden="true"></i><span>Santiago</span><time datetime="22:30">22:30</time></button>
-          </div>
-          <p class="sr-only" data-viaje-aviso role="status"></p>
         </div>
       </div>
     </section>
@@ -89,74 +75,25 @@
         </ul></details>
       </div>
     </section>
-    <section class="systems" id="services" aria-labelledby="systems-title">
-      <div class="wrap">
-        <div class="systems-heading">
-          <h2 id="systems-title">Sistemas para cada etapa del viaje</h2>
-          <p>Explora cómo trabajan la agencia, el equipo de carga y las empresas que viajan por convenio.</p>
-        </div>
-        <div id="features" class="systems-workbench">
-          <nav class="systems-options" aria-label="Sistemas BUSKIT">
-            <a id="opcion-pasajes" href="#pasajes">Pasajes</a>
-            <a id="opcion-encomiendas" href="#encomiendas">Encomiendas</a>
-            <a id="opcion-seguimiento" href="#seguimiento">Seguimiento</a>
-            <a id="opcion-convenios" href="#convenios">Convenios</a>
-          </nav>
-          <div class="systems-panels">
-            <article id="pasajes" class="systems-panel">
-              <h3>Venta de pasajes</h3>
-              <p>La agencia consulta los asientos disponibles y vende el tramo que necesita el pasajero.</p>
-              <div class="systems-example" hidden>
-                <canvas width="600" height="184" aria-hidden="true"></canvas>
-                <div class="systems-controls"><span class="systems-reading" role="status">Asiento 09 seleccionado</span><button type="button">Cambiar asiento</button></div>
-              </div>
-            </article>
-            <article id="encomiendas" class="systems-panel">
-              <h3>Despacho de encomiendas</h3>
-              <p>Las agencias registran cada bulto y consultan su recorrido desde la recepción hasta la entrega.</p>
-              <div class="systems-example" hidden>
-                <canvas width="600" height="184" aria-hidden="true"></canvas>
-                <div class="systems-controls"><span class="systems-reading" role="status">Recibido en origen</span><button type="button">Despachar bulto</button></div>
-              </div>
-            </article>
-            <article id="seguimiento" class="systems-panel">
-              <h3>Seguimiento del servicio</h3>
-              <p>El equipo de tráfico consulta la ubicación del bus y la agencia puede orientar al pasajero durante el viaje.</p>
-              <div class="systems-example" hidden>
-                <canvas width="600" height="184" aria-hidden="true"></canvas>
-                <div class="systems-controls"><span class="systems-reading" role="status">Salida de Puerto Montt</span><button type="button">Avanzar viaje</button></div>
-              </div>
-            </article>
-            <article id="convenios" class="systems-panel">
-              <h3>Pasajes por convenio</h3>
-              <p>Cada empresa compra pasajes para su equipo en un portal privado, bajo las condiciones acordadas con el operador.</p>
-              <div class="systems-example" hidden>
-                <canvas width="600" height="184" aria-hidden="true"></canvas>
-                <div class="systems-controls"><span class="systems-reading" role="status">Pasaje por emitir</span><button type="button">Emitir muestra</button></div>
-              </div>
-            </article>
-            <span class="systems-disclosure" hidden>Simulación con datos de muestra</span>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="venta-abordo" id="venta-a-bordo" aria-labelledby="titulo-venta-abordo" data-venta-abordo>
+    <section class="venta-abordo" id="venta-a-bordo" aria-labelledby="titulo-venta-abordo">
       <div class="wrap venta-abordo__layout">
         <div class="venta-abordo__intro">
-          <h2 id="titulo-venta-abordo">Una agencia de ventas en el mismo bus.</h2>
-          <p>Con BUSKIT en un terminal KLAP, la tripulación vende, cobra e imprime el pasaje durante el recorrido. La empresa puede revisar lo recaudado en la caja del bus.</p>
-          <div class="venta-abordo__controles" hidden>
-            <label class="venta-abordo__eleccion" for="asiento-muestra">Asiento
-              <select id="asiento-muestra">
-                <option value="03">03</option>
-                <option value="05">05</option>
-                <option value="07">07</option>
-                <option value="09" selected>09</option>
-              </select>
-            </label>
-            <button class="venta-abordo__emitir" type="button">Emitir pasaje de muestra</button>
-          </div>
-          <p class="venta-abordo__aviso" role="status"></p>
+          <h2 id="titulo-venta-abordo">Venta de pasajes en agencia y a bordo</h2>
+          <p>BUSKIT vincula cada venta con su servicio, su tramo y la caja que recibió el pago. Así puedes revisar cuánto vendió la agencia y cuánto recaudó la tripulación durante el viaje.</p>
+          <dl class="venta-abordo__detalle">
+            <div>
+              <dt>Boletería y venta por tramo</dt>
+              <dd>El vendedor consulta las salidas, la tarifa y la disponibilidad por piso y salón para el trayecto solicitado. Desde la agencia cobra y emite el pasaje.</dd>
+            </div>
+            <div>
+              <dt>Una agencia en el bus con KLAP</dt>
+              <dd>Cuando un pasajero sube en ruta, la tripulación vende el tramo, cobra en efectivo o con tarjeta e imprime el boleto en el mismo terminal.</dd>
+            </div>
+            <div>
+              <dt>Rendición de caja</dt>
+              <dd>Al cierre, la empresa revisa los pasajes vendidos por medio de pago. En la caja del bus también puede cotejar los gastos del viaje con el efectivo que entrega la tripulación.</dd>
+            </div>
+          </dl>
         </div>
         <figure class="boleto" aria-label="Pasaje de muestra de Puerto Montt a Santiago vía Temuco">
           <div class="boleto__papel">
@@ -174,21 +111,50 @@
               </dl>
             </div>
             <div class="boleto__talon" aria-label="Talón de control">
-              <div class="boleto__plaza"><span>Asiento</span><strong data-boleto-asiento>09</strong></div>
+              <div class="boleto__plaza"><span>Asiento</span><strong>09</strong></div>
               <div class="boleto__identificador"><img class="boleto-code" src="assets/folio-09.svg" alt="" width="338" height="76"><span class="boleto-folio">BK-0830-09</span></div>
             </div>
           </div>
+          <figcaption class="boleto__acciones" hidden>
+            <button class="boleto__imprimir" type="button">Imprimir pasaje de muestra</button>
+            <span class="boleto__aviso" role="status"></span>
+          </figcaption>
         </figure>
+      </div>
+    </section>
+    <section class="systems" id="services" aria-labelledby="systems-title">
+      <div class="wrap systems-layout" id="features">
+        <div class="systems-intro">
+          <h2 id="systems-title">Sistemas para la operación de tu flota</h2>
+          <p>Adaptamos los sistemas al trabajo de tus equipos de tráfico, boletería y administración, desde la programación de los buses hasta las condiciones que pactas con tus clientes.</p>
+        </div>
+        <div class="systems-list">
+          <article id="seguimiento">
+            <h3>Control de flota y seguimiento</h3>
+            <p>Tráfico programa las salidas, asigna buses y tripulaciones y consulta la ubicación de los vehículos en ruta. La agencia puede informar al pasajero dónde va su bus.</p>
+          </article>
+          <article id="pasajes">
+            <h3>Ocupación por tramo</h3>
+            <p>Una plaza vendida de Puerto Montt a Temuco puede volver a venderse de Temuco a Santiago. Boletería consulta la disponibilidad según dónde sube y baja cada pasajero.</p>
+          </article>
+          <article id="convenios">
+            <h3>Venta por convenio</h3>
+            <p>El operador puede habilitar un portal privado para que una empresa gestione los pasajes de su personal. Las condiciones de venta se adaptan a lo acordado con cada cliente.</p>
+          </article>
+          <article id="encomiendas">
+            <h3>Despacho de encomiendas</h3>
+            <p>La agencia de origen registra los bultos que recibe. Las agencias consultan el estado del envío y la oficina de destino registra la entrega.</p>
+          </article>
+        </div>
       </div>
     </section>
     <section class="channels" id="integraciones" aria-labelledby="canales-titulo">
       <div class="wrap channels-inner">
-        <div class="channels-intro"><h2 id="canales-titulo">Conecta tus canales de venta.</h2>
-          <p>Las API de BUSKIT permiten vender pasajes en los portales donde tus pasajeros ya compran. Con Odoo, ampliamos el sistema hacia la gestión administrativa de tu empresa.</p></div>
+        <div class="channels-intro"><h2 id="canales-titulo">Venta de pasajes en línea</h2>
+          <p>Las API de BUSKIT conectan a tu empresa con recorrido.cl y kupos.cl para que los pasajeros puedan comprar tus servicios en ambas plataformas.</p></div>
         <div class="channel-list">
           <a href="https://www.recorrido.cl/es"><strong>recorrido.cl</strong><span>Venta de pasajes en línea</span><i aria-hidden="true">↗</i></a>
           <a href="https://kupos.cl/"><strong>kupos.cl</strong><span>Venta de pasajes en línea</span><i aria-hidden="true">↗</i></a>
-          <a href="https://www.odoo.com/es"><strong>Odoo</strong><span>Partner de implementación ERP</span><i aria-hidden="true">↗</i></a>
         </div>
       </div>
     </section>
@@ -196,6 +162,7 @@
       <div class="wrap company-inner"><div class="company-copy">
         <h2 id="empresa-titulo">Ingeniería chilena para el transporte.</h2>
         <p>Desde 2007 desarrollamos software para empresas de buses en Chile. Trabajamos junto a sus equipos de tráfico, agencia y administración para adaptar los sistemas a la forma de operar de cada empresa.</p>
+        <p>También somos <a href="https://www.odoo.com/es">partner de implementación de Odoo</a> para proyectos de gestión empresarial.</p>
       </div><div class="company-figure"><strong>Más de 60 millones</strong><span>de pasajes vendidos a través de nuestros sistemas</span></div></div>
     </section>
     <section class="contact" id="contact" aria-labelledby="contacto-titulo"><div class="wrap contact-inner">
