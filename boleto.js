@@ -1,32 +1,48 @@
-const boleto = document.querySelector('.boleto');
+(() => {
+  const venta = document.querySelector('[data-venta-abordo]');
+  if (!venta) return;
 
-if (boleto) {
-  const selector = boleto.querySelector('.boleto-choice select');
-  const numeros = boleto.querySelectorAll('[data-boleto-asiento]');
-  const aviso = boleto.querySelector('[role="status"]');
+  const selector = venta.querySelector('select');
+  const boleto = venta.querySelector('.boleto');
+  const asiento = boleto.querySelector('[data-boleto-asiento]');
   const codigo = boleto.querySelector('.boleto-code');
   const folio = boleto.querySelector('.boleto-folio');
+  const accion = venta.querySelector('.venta-abordo__emitir');
+  const aviso = venta.querySelector('[role="status"]');
 
-  function mostrarAsiento() {
-    for (const numero of numeros) numero.textContent = selector.value;
+  function prepararPasaje() {
+    asiento.textContent = selector.value;
     folio.textContent = 'BK-0830-' + selector.value;
-    codigo.setAttribute('src', 'assets/folio-' + selector.value + '.svg');
+    codigo.src = 'assets/folio-' + selector.value + '.svg';
+    boleto.classList.remove('boleto--emitido');
+    accion.textContent = 'Emitir pasaje de muestra';
   }
 
-  mostrarAsiento();
-  boleto.querySelector('.boleto-actions').hidden = false;
+  prepararPasaje();
+  venta.querySelector('.venta-abordo__controles').hidden = false;
   selector.addEventListener('change', () => {
-    mostrarAsiento();
-    aviso.textContent = `Asiento ${selector.value} en el pasaje y el talón.`;
+    prepararPasaje();
+    aviso.textContent = 'Asiento ' + selector.value + ' seleccionado.';
   });
-  boleto.querySelector('.boleto-print').addEventListener('click', async () => {
+
+  accion.addEventListener('click', async () => {
+    if (!boleto.classList.contains('boleto--emitido')) {
+      boleto.classList.add('boleto--emitido');
+      accion.textContent = 'Imprimir muestra';
+      aviso.textContent = 'Pasaje emitido. Folio ' + folio.textContent + '.';
+      return;
+    }
+
+    const asientoImpreso = selector.value;
     try {
       await codigo.decode();
+      if (selector.value !== asientoImpreso || !boleto.classList.contains('boleto--emitido')) return;
       document.body.classList.add('imprimir-boleto');
       window.print();
     } catch {
-      aviso.textContent = 'El código del pasaje todavía no ha cargado. Vuelve a intentar la impresión.';
+      document.body.classList.remove('imprimir-boleto');
+      aviso.textContent = 'El código del pasaje todavía no ha cargado. Intenta imprimir de nuevo.';
     }
   });
   window.addEventListener('afterprint', () => document.body.classList.remove('imprimir-boleto'));
-}
+})();

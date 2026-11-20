@@ -3,189 +3,207 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>BUSKIT | Sistemas para empresas de buses</title>
-  <meta name="description" content="Conoce cómo funcionan los sistemas BUSKIT de pasajes, encomiendas y seguimiento. Software chileno para agencias y operadores de buses, partner de Odoo y conectado con recorrido.cl y kupos.cl.">
+  <title>BUSKIT | Control de flota para empresas de buses</title>
+  <meta name="description" content="Software chileno de control de flota, venta de pasajes en agencia y a bordo con KLAP, encomiendas, seguimiento y convenios para empresas de buses.">
   <meta name="theme-color" content="#073265">
   <link rel="canonical" href="https://www.bus-kit.com/">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="es_CL">
   <meta property="og:site_name" content="BUSKIT">
-  <meta property="og:title" content="BUSKIT | Software para la agencia, el andén y la ruta">
-  <meta property="og:description" content="Pasajes, encomiendas y seguimiento para empresas de transporte. Explora los sistemas BUSKIT en uso.">
+  <meta property="og:title" content="BUSKIT | Control de flota para empresas de buses">
+  <meta property="og:description" content="De la programación de salidas a la rendición de caja. Explora un viaje simulado con BUSKIT.">
   <meta property="og:url" content="https://www.bus-kit.com/">
-  <meta property="og:image" content="https://www.bus-kit.com/assets/marcopolo-g8-tec-buskit.webp">
+  <meta property="og:image" content="https://www.bus-kit.com/assets/buskit-en-ruta.webp">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-  <link rel="preload" href="assets/barlow-semi-condensed-semibold.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="sistemas.css">
   <link rel="stylesheet" href="boleto.css">
   <link rel="stylesheet" href="ticket-impresion.css" media="print">
   <script src="navegacion.js" defer></script>
   <script src="boleto.js" defer></script>
-  <script src="capturas.js" defer></script>
+  <script src="viaje.js" defer></script>
+  <script src="sistemas.js" defer></script>
 </head>
 <body id="home">
   <a class="skip" href="#contenido">Saltar al contenido</a>
   <header class="site-header">
     <div class="wrap header-inner">
-      <a class="brand" href="#home" aria-label="BUSKIT, inicio"><img src="assets/buskit-blanco.svg" alt="BUSKIT" width="1916" height="460"></a>
+      <a class="brand" href="#home" aria-label="BUSKIT, inicio"><img src="assets/buskit-logo.svg" alt="BUSKIT" width="1916" height="460"></a>
       <nav id="menu-principal" class="main-nav" aria-label="Navegación principal">
-        <a href="#services">Sistemas</a><a href="#integraciones">Integraciones</a><a href="#clients">Clientes</a>
+        <a href="#operacion">Control de flota</a>
+        <a href="#services">Sistemas</a>
+        <a href="#integraciones">Integraciones</a>
+        <a href="#about">Empresa</a>
       </nav>
-      <a class="nav-contact" href="#contact">Contactar a BUSKIT</a>
+      <a class="nav-contact" href="#contact">Solicitar demo <span class="diagonal" aria-hidden="true">↗</span></a>
       <button class="menu-trigger" hidden type="button" aria-controls="menu-principal" aria-expanded="false" aria-label="Abrir menú"><span aria-hidden="true"></span></button>
     </div>
   </header>
   <main id="contenido" tabindex="-1">
-    <section class="opening" aria-labelledby="portada-titulo">
-      <div class="wrap">
-        <div class="opening-intro">
-          <h1 id="portada-titulo">Software para la agencia,<br> el andén y la ruta.</h1>
+    <section id="operacion" class="fleet-hero" aria-labelledby="portada-titulo">
+      <div class="landscape">
+        <picture class="hero-picture">
+          <source media="(max-width: 43rem)" srcset="assets/buskit-en-ruta-movil.webp">
+          <img src="assets/buskit-en-ruta.webp" width="1920" height="739" alt="Marcopolo de dos pisos con la gráfica BUSKIT en una carretera del sur de Chile." fetchpriority="high">
+        </picture>
+        <div class="wrap landscape-inner">
           <div class="opening-copy">
-            <p>Vende pasajes, despacha encomiendas y ubica cada bus en ruta. Sistemas chilenos para quienes operan el transporte interurbano.</p>
-            <a href="#services">Conocer los sistemas</a>
-          </div>
-        </div>
-        <figure class="boleto" aria-label="Pasaje de muestra de Temuco a Puerto Montt">
-          <div class="boleto-photo">
-            <img src="assets/marcopolo-g8-tec-buskit.webp" alt="Diseño BUSKIT 2027 inspirado en el Marcopolo Paradiso G8 TEC 1800 DD de dos pisos, con el logo azul marino y turquesa en el costado y el frente." width="1350" height="900" fetchpriority="high">
-          </div>
-          <div class="boleto-paper">
-            <div class="boleto-body">
-              <div class="boleto-heading">
-                <img src="assets/buskit-logo.svg" alt="BUSKIT" width="1916" height="460">
-                <span>Pasaje de muestra</span>
-              </div>
-              <dl class="boleto-route">
-                <div><dt>Origen</dt><dd>Temuco</dd></div>
-                <div><dt>Destino</dt><dd>Puerto Montt</dd></div>
-              </dl>
-              <dl class="boleto-data">
-                <div><dt>Salida</dt><dd><time datetime="08:30">08:30</time></dd></div>
-                <div><dt>Salón</dt><dd>Cama</dd></div>
-                <div><dt>Piso</dt><dd>1</dd></div>
-                <div><dt>Asiento</dt><dd data-boleto-asiento>09</dd></div>
-              </dl>
-              <div class="boleto-actions" hidden>
-                <label class="boleto-choice">
-                  <span>Cambiar asiento</span>
-                  <select aria-label="Cambiar asiento del pasaje de muestra">
-                    <option value="03">Asiento 03</option>
-                    <option value="05">Asiento 05</option>
-                    <option value="07">Asiento 07</option>
-                    <option value="09" selected>Asiento 09</option>
-                  </select>
-                </label>
-                <button class="boleto-print" type="button">Imprimir muestra</button>
-              </div>
-              <span class="boleto-status" role="status"></span>
-            </div>
-            <div class="boleto-stub" aria-label="Talón de control">
-              <div class="boleto-stub-heading"><span class="boleto-stub-title">Talón de control</span><span class="boleto-stub-route">Temuco a Puerto Montt</span></div>
-              <div class="boleto-stub-seat"><span>Asiento</span><strong data-boleto-asiento>09</strong></div>
-              <div class="boleto-stub-bottom">
-                <span>Salida <time datetime="08:30">08:30</time></span>
-                <img class="boleto-code" src="assets/folio-09.svg" alt="">
-                <span class="boleto-folio">BK-0830-09</span>
-              </div>
+            <h1 id="portada-titulo">Control de flota para empresas de buses.</h1>
+            <p>Programa tus salidas, coordina a tu tripulación y controla lo recaudado en agencia y a bordo.</p>
+            <div class="hero-links">
+              <a class="button-mint" href="#services">Explorar los sistemas <span class="arrow-right" aria-hidden="true"></span></a>
+              <a class="link-demo" href="#venta-a-bordo">Probar venta a bordo</a>
             </div>
           </div>
-        </figure>
-      </div>
-    </section>
-    <section class="catalog" id="services" aria-labelledby="sistemas-titulo">
-      <div class="wrap">
-        <div class="catalog-heading">
-          <h2 id="sistemas-titulo">Los sistemas en operación</h2>
-          <p>Una mirada al trabajo diario en ETM y Bus-Sur.</p>
-        </div>
-        <div class="product-spread" id="features">
-          <article id="pasajes">
-            <h3>Pasajes</h3>
-            <p>Elige la salida, revisa los asientos por piso y emite el pasaje. Cada venta queda asociada a la caja de la agencia.</p>
-            <figure class="product-image">
-              <a class="enlarge" href="assets/producto-pasajes.webp" aria-label="Ampliar captura del punto de venta de ETM">
-                <img src="assets/producto-pasajes.webp" width="900" height="520" alt="Punto de venta de ETM con asientos libres y ocupados en el segundo piso." loading="lazy">
-                <span class="loupe" aria-hidden="true"></span>
-              </a>
-              <figcaption>Punto de venta de ETM</figcaption>
-            </figure>
-          </article>
-          <article id="encomiendas">
-            <h3>Encomiendas</h3>
-            <p>Registra los bultos, imprime sus etiquetas y consulta los movimientos de la guía desde la sucursal de origen hasta la entrega.</p>
-            <figure class="product-image">
-              <a class="enlarge" href="assets/producto-encomiendas.webp" aria-label="Ampliar captura de recepción de encomiendas de Bus-Sur">
-                <img src="assets/producto-encomiendas.webp" width="579" height="331" alt="Detalle de bultos de una recepción en Bus-Sur con artículos de muestra." loading="lazy">
-                <span class="loupe" aria-hidden="true"></span>
-              </a>
-              <figcaption>Recepción de encomiendas de Bus-Sur</figcaption>
-            </figure>
-          </article>
-          <article id="seguimiento">
-            <h3>Seguimiento</h3>
-            <p>La agencia consulta la ubicación que reporta el GPS. El pasajero revisa el avance de su bus desde el portal «¿Dónde viene mi bus?».</p>
-            <figure class="product-image">
-              <a class="enlarge" href="assets/producto-seguimiento.webp" aria-label="Ampliar captura del portal de seguimiento de ETM">
-                <img src="assets/producto-seguimiento.webp" width="1200" height="706" alt="Portal de ETM donde el pasajero consulta su viaje con el número de pasaje y su validador o RUT." loading="lazy">
-                <span class="loupe" aria-hidden="true"></span>
-              </a>
-              <figcaption>Portal de seguimiento de ETM</figcaption>
-            </figure>
-          </article>
+          <div class="bus-tag" aria-hidden="true"><i></i><span>Máquina 18</span><b data-viaje-estado>En servicio</b></div>
         </div>
       </div>
-    </section>
-    <section class="integrations" id="integraciones" aria-labelledby="integraciones-titulo">
-      <div class="wrap partners-layout">
-        <div class="partner-intro">
-          <h2 id="integraciones-titulo">Venta en línea<br> y gestión con Odoo</h2>
-          <p>Conectamos tu operación con los canales donde compran tus pasajeros y con las áreas que administran la empresa.</p>
+      <div class="fleet-strip">
+        <div class="wrap strip-inner">
+          <div class="run-title"><i class="track-icon" aria-hidden="true"><b></b></i><div><span>Recorrido simulado</span><strong>Puerto Montt a Santiago</strong></div></div>
+          <div class="route-control" role="group" aria-label="Paradas del recorrido simulado">
+            <button type="button" disabled aria-pressed="true" data-estado="En servicio"><i aria-hidden="true"></i><span>Puerto Montt</span><time datetime="08:30">08:30</time></button>
+            <button type="button" disabled aria-pressed="false" data-estado="En ruta"><i aria-hidden="true"></i><span>Temuco</span><time datetime="13:30">13:30</time></button>
+            <button type="button" disabled aria-pressed="false" data-estado="En destino"><i aria-hidden="true"></i><span>Santiago</span><time datetime="22:30">22:30</time></button>
+          </div>
+          <p class="sr-only" data-viaje-aviso role="status"></p>
         </div>
-        <dl class="partners">
-          <div><dt><a href="https://www.odoo.com/es">Odoo</a></dt><dd><strong>Partner de implementación</strong>Adaptamos el ERP a tus procesos de ventas, inventario y contabilidad.</dd></div>
-          <div><dt><a href="https://www.recorrido.cl/es">recorrido.cl</a></dt><dd><strong>Distribución de pasajes</strong>Ofrece tus salidas en recorrido.cl e integra ese canal con la venta en agencia.</dd></div>
-          <div><dt><a href="https://kupos.cl/">kupos.cl</a></dt><dd><strong>Distribución de pasajes</strong>Consulta desde la agencia las ventas de pasajes que ingresan por kupos.cl.</dd></div>
-        </dl>
       </div>
     </section>
     <section class="customers" id="clients" aria-labelledby="clientes-titulo">
-      <div class="wrap">
-        <h2 id="clientes-titulo">Empresas que usan BUSKIT</h2>
-        <ul class="logos">
+      <div class="wrap clients-inner">
+        <h2 id="clientes-titulo">Empresas que trabajan con BUSKIT</h2>
+        <ul class="client-logos">
           <li><img src="buses-etm-logo.png" alt="Buses ETM" width="120" height="23" loading="lazy"></li>
           <li><img src="buses-queilen-bus-logo.png" alt="QueilenBus" width="107" height="50" loading="lazy"></li>
           <li><img src="buses-bus-sur-logo.png" alt="Bus-Sur" width="478" height="175" loading="lazy"></li>
           <li><img src="buses-talca-paris-y-londres-logo.png" alt="Talca París y Londres" width="300" height="122" loading="lazy"></li>
+        </ul>
+        <details class="more-clients"><summary><span>Más clientes</span></summary><ul class="other-logos">
           <li><img src="buses-fierro-logo.png" alt="Buses Fierro" width="120" height="50" loading="lazy"></li>
           <li><img src="buses-via-lago-sur-logo.png" alt="Vía Lago Sur" width="111" height="50" loading="lazy"></li>
           <li><img src="tpl-cargo-logo.png" alt="TPL Cargo" width="526" height="225" loading="lazy"></li>
           <li><img src="buses-bus-sur-cargo-logo.png" alt="Bus-Sur Cargo" width="478" height="200" loading="lazy"></li>
           <li><img src="ferreteria-dimasur-logo.png" alt="Ferretería Dimasur" width="318" height="158" loading="lazy"></li>
-        </ul>
+        </ul></details>
       </div>
     </section>
-    <section class="contact" id="contact" aria-labelledby="contacto-titulo">
-      <div class="contact-photo">
-        <img src="assets/agencia-bus.webp" width="1050" height="591" alt="Ilustración de una agente en boletería con vista a los andenes." loading="lazy">
-      </div>
-      <div class="contact-info">
-        <h2 id="contacto-titulo">Conoce BUSKIT<br> en una demo.</h2>
-        <p>Cuéntame cómo trabajan tus agencias y coordinemos una demostración para tu equipo.</p>
-        <address><strong>Pablo Barría Genta</strong><span>Fundador de BUSKIT</span></address>
-        <a class="email" href="mailto:pablo@bus-kit.com?subject=Demo%20de%20BUSKIT">pablo@bus-kit.com</a>
+    <section class="systems" id="services" aria-labelledby="systems-title">
+      <div class="wrap">
+        <div class="systems-heading">
+          <h2 id="systems-title">Sistemas para cada etapa del viaje</h2>
+          <p>Explora cómo trabajan la agencia, el equipo de carga y las empresas que viajan por convenio.</p>
+        </div>
+        <div id="features" class="systems-workbench">
+          <nav class="systems-options" aria-label="Sistemas BUSKIT">
+            <a id="opcion-pasajes" href="#pasajes">Pasajes</a>
+            <a id="opcion-encomiendas" href="#encomiendas">Encomiendas</a>
+            <a id="opcion-seguimiento" href="#seguimiento">Seguimiento</a>
+            <a id="opcion-convenios" href="#convenios">Convenios</a>
+          </nav>
+          <div class="systems-panels">
+            <article id="pasajes" class="systems-panel">
+              <h3>Venta de pasajes</h3>
+              <p>La agencia consulta los asientos disponibles y vende el tramo que necesita el pasajero.</p>
+              <div class="systems-example" hidden>
+                <canvas width="600" height="184" aria-hidden="true"></canvas>
+                <div class="systems-controls"><span class="systems-reading" role="status">Asiento 09 seleccionado</span><button type="button">Cambiar asiento</button></div>
+              </div>
+            </article>
+            <article id="encomiendas" class="systems-panel">
+              <h3>Despacho de encomiendas</h3>
+              <p>Las agencias registran cada bulto y consultan su recorrido desde la recepción hasta la entrega.</p>
+              <div class="systems-example" hidden>
+                <canvas width="600" height="184" aria-hidden="true"></canvas>
+                <div class="systems-controls"><span class="systems-reading" role="status">Recibido en origen</span><button type="button">Despachar bulto</button></div>
+              </div>
+            </article>
+            <article id="seguimiento" class="systems-panel">
+              <h3>Seguimiento del servicio</h3>
+              <p>El equipo de tráfico consulta la ubicación del bus y la agencia puede orientar al pasajero durante el viaje.</p>
+              <div class="systems-example" hidden>
+                <canvas width="600" height="184" aria-hidden="true"></canvas>
+                <div class="systems-controls"><span class="systems-reading" role="status">Salida de Puerto Montt</span><button type="button">Avanzar viaje</button></div>
+              </div>
+            </article>
+            <article id="convenios" class="systems-panel">
+              <h3>Pasajes por convenio</h3>
+              <p>Cada empresa compra pasajes para su equipo en un portal privado, bajo las condiciones acordadas con el operador.</p>
+              <div class="systems-example" hidden>
+                <canvas width="600" height="184" aria-hidden="true"></canvas>
+                <div class="systems-controls"><span class="systems-reading" role="status">Pasaje por emitir</span><button type="button">Emitir muestra</button></div>
+              </div>
+            </article>
+            <span class="systems-disclosure" hidden>Simulación con datos de muestra</span>
+          </div>
+        </div>
       </div>
     </section>
+    <section class="venta-abordo" id="venta-a-bordo" aria-labelledby="titulo-venta-abordo" data-venta-abordo>
+      <div class="wrap venta-abordo__layout">
+        <div class="venta-abordo__intro">
+          <h2 id="titulo-venta-abordo">Una agencia de ventas en el mismo bus.</h2>
+          <p>Con BUSKIT en un terminal KLAP, la tripulación vende, cobra e imprime el pasaje durante el recorrido. La empresa puede revisar lo recaudado en la caja del bus.</p>
+          <div class="venta-abordo__controles" hidden>
+            <label class="venta-abordo__eleccion" for="asiento-muestra">Asiento
+              <select id="asiento-muestra">
+                <option value="03">03</option>
+                <option value="05">05</option>
+                <option value="07">07</option>
+                <option value="09" selected>09</option>
+              </select>
+            </label>
+            <button class="venta-abordo__emitir" type="button">Emitir pasaje de muestra</button>
+          </div>
+          <p class="venta-abordo__aviso" role="status"></p>
+        </div>
+        <figure class="boleto" aria-label="Pasaje de muestra de Puerto Montt a Santiago vía Temuco">
+          <div class="boleto__papel">
+            <div class="boleto__cuerpo">
+              <div class="boleto__cabecera"><img src="assets/buskit-logo.svg" alt="BUSKIT" width="1916" height="460"><span>Pasaje de muestra</span></div>
+              <dl class="boleto__ruta">
+                <div><dt>Origen</dt><dd>Puerto Montt</dd></div>
+                <div class="boleto__escala"><dt>Escala</dt><dd>Temuco</dd></div>
+                <div><dt>Destino</dt><dd>Santiago</dd></div>
+              </dl>
+              <dl class="boleto__datos">
+                <div><dt>Salida</dt><dd><time datetime="08:30">08:30</time></dd></div>
+                <div><dt>Salón</dt><dd>Cama</dd></div>
+                <div><dt>Piso</dt><dd>1</dd></div>
+              </dl>
+            </div>
+            <div class="boleto__talon" aria-label="Talón de control">
+              <div class="boleto__plaza"><span>Asiento</span><strong data-boleto-asiento>09</strong></div>
+              <div class="boleto__identificador"><img class="boleto-code" src="assets/folio-09.svg" alt="" width="338" height="76"><span class="boleto-folio">BK-0830-09</span></div>
+            </div>
+          </div>
+        </figure>
+      </div>
+    </section>
+    <section class="channels" id="integraciones" aria-labelledby="canales-titulo">
+      <div class="wrap channels-inner">
+        <div class="channels-intro"><h2 id="canales-titulo">Conecta tus canales de venta.</h2>
+          <p>Las API de BUSKIT permiten vender pasajes en los portales donde tus pasajeros ya compran. Con Odoo, ampliamos el sistema hacia la gestión administrativa de tu empresa.</p></div>
+        <div class="channel-list">
+          <a href="https://www.recorrido.cl/es"><strong>recorrido.cl</strong><span>Venta de pasajes en línea</span><i aria-hidden="true">↗</i></a>
+          <a href="https://kupos.cl/"><strong>kupos.cl</strong><span>Venta de pasajes en línea</span><i aria-hidden="true">↗</i></a>
+          <a href="https://www.odoo.com/es"><strong>Odoo</strong><span>Partner de implementación ERP</span><i aria-hidden="true">↗</i></a>
+        </div>
+      </div>
+    </section>
+    <section class="company" id="about" aria-labelledby="empresa-titulo">
+      <div class="wrap company-inner"><div class="company-copy">
+        <h2 id="empresa-titulo">Ingeniería chilena para el transporte.</h2>
+        <p>Desde 2007 desarrollamos software para empresas de buses en Chile. Trabajamos junto a sus equipos de tráfico, agencia y administración para adaptar los sistemas a la forma de operar de cada empresa.</p>
+      </div><div class="company-figure"><strong>Más de 60 millones</strong><span>de pasajes vendidos a través de nuestros sistemas</span></div></div>
+    </section>
+    <section class="contact" id="contact" aria-labelledby="contacto-titulo"><div class="wrap contact-inner">
+      <div><h2 id="contacto-titulo">Conversemos sobre tu flota.</h2>
+        <p>Cuéntanos cómo operan tus buses y agencias. Coordinaremos una demostración para tu equipo.</p></div>
+      <div class="contact-person"><span>Pablo Barría Genta · Fundador</span><a href="mailto:pablo@bus-kit.com?subject=Demo%20de%20BUSKIT">pablo@bus-kit.com <span aria-hidden="true">↗</span></a></div>
+    </div></section>
   </main>
-  <footer class="footer" id="about">
-    <div class="wrap footer-inner">
-      <a class="brand" href="#home" aria-label="BUSKIT, volver al inicio"><img src="assets/buskit-blanco.svg" alt="BUSKIT" width="1916" height="460"></a>
-      <p>Software de transporte desarrollado en Gorbea, Chile, desde 2007.</p>
-      <a href="#home">Volver al inicio</a>
-    </div>
-  </footer>
-  <dialog class="viewer" aria-labelledby="captura-titulo">
-    <div class="viewer-bar"><h2 id="captura-titulo">Captura de sistema</h2><button type="button">Cerrar</button></div>
-  </dialog>
+  <footer class="footer"><div class="wrap footer-inner"><a class="brand" href="#home" aria-label="BUSKIT, volver al inicio"><img src="assets/buskit-blanco.svg" alt="BUSKIT" width="1916" height="460"></a><span>Gorbea, Chile</span><a href="#home">Volver al inicio ↑</a></div></footer>
 </body>
 </html>
